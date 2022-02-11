@@ -70,6 +70,10 @@ class UserModel: ObservableObject {
             let user = UserService.shared.user
             user.displayName = data?["displayName"] as? String ?? ""
             user.favouriteTeam = data?["favouriteTeam"] as? String ?? ""
+            user.bio = data?["bio"] as? String ?? ""
+            user.winStreak = data?["winStreak"] as? Int ?? 0
+            user.correctGames = data?["correctGames"] as? Int ?? 0
+            user.balance = data?["balance"] as? Int ?? 0
         }
     }
     
@@ -82,7 +86,7 @@ class UserModel: ObservableObject {
         ref.setData(["username":username.lowercased(),
                      "displayName":username,
                      "favouriteTeam": Constants.LCSTeams[favTeam],
-                     "bio": "",
+                     "bio": "My name is, \(username)!",
                      "winStreak": 0,
                      "correctGames": 0,
                      "balance": 50], merge: true)
