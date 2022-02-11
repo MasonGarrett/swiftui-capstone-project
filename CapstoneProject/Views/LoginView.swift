@@ -144,7 +144,7 @@ struct LoginView: View {
                                 self.errorMessage = nil
                                 
                                 // Send user data to firestore
-                                self.model.saveUserData(username: username, favTeam: selectedTeam)
+                                self.model.createUser(username: username, favTeam: selectedTeam)
                                 
                                 // Change the view to logged in view
                                 self.model.checkLogin()

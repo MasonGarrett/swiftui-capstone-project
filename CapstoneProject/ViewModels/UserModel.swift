@@ -73,7 +73,7 @@ class UserModel: ObservableObject {
         }
     }
     
-    func saveUserData(username: String, favTeam: Int) {
+    func createUser(username: String, favTeam: Int) {
         
         // Save the first name
         let firebaseUser = Auth.auth().currentUser
@@ -81,11 +81,19 @@ class UserModel: ObservableObject {
         
         ref.setData(["username":username.lowercased(),
                      "displayName":username,
-                     "favouriteTeam": Constants.LCSTeams[favTeam]], merge: true)
+                     "favouriteTeam": Constants.LCSTeams[favTeam],
+                     "bio": "",
+                     "winStreak": 0,
+                     "correctGames": 0,
+                     "balance": 50], merge: true)
         
         // Update the user meta data
         let user = UserService.shared.user
         user.displayName = username
         user.favouriteTeam = Constants.LCSTeams[favTeam]
+        user.bio = ""
+        user.winStreak = 0
+        user.correctGames = 0
+        user.balance = 50
     }
 }
