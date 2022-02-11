@@ -13,6 +13,12 @@
 		43E363DB27B6C83A009E5803 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43E363DA27B6C83A009E5803 /* Assets.xcassets */; };
 		43E363DE27B6C83A009E5803 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43E363DD27B6C83A009E5803 /* Preview Assets.xcassets */; };
 		43E363E927B6CA0F009E5803 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43E363E827B6CA0F009E5803 /* GoogleService-Info.plist */; };
+		43E363EB27B6CB7C009E5803 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E363EA27B6CB7C009E5803 /* UserModel.swift */; };
+		43E363ED27B6CD65009E5803 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E363EC27B6CD65009E5803 /* LoginView.swift */; };
+		43E363EF27B6D022009E5803 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E363EE27B6D022009E5803 /* Constants.swift */; };
+		43E363F127B6FCC8009E5803 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E363F027B6FCC8009E5803 /* User.swift */; };
+		43E363F327B6FCDC009E5803 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E363F227B6FCDC009E5803 /* UserService.swift */; };
+		43E363F527B6FECB009E5803 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E363F427B6FECB009E5803 /* ProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +29,12 @@
 		43E363DA27B6C83A009E5803 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43E363DD27B6C83A009E5803 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		43E363E827B6CA0F009E5803 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		43E363EA27B6CB7C009E5803 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		43E363EC27B6CD65009E5803 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		43E363EE27B6D022009E5803 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		43E363F027B6FCC8009E5803 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		43E363F227B6FCDC009E5803 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		43E363F427B6FECB009E5803 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		555B26B9679E5915434FD9E7 /* Pods-CapstoneProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneProject.release.xcconfig"; path = "Target Support Files/Pods-CapstoneProject/Pods-CapstoneProject.release.xcconfig"; sourceTree = "<group>"; };
 		C7CD0CE6AB6EFB9F91DD8908 /* Pods-CapstoneProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneProject.debug.xcconfig"; path = "Target Support Files/Pods-CapstoneProject/Pods-CapstoneProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,6 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				43E363D827B6C838009E5803 /* LaunchView.swift */,
+				43E363EC27B6CD65009E5803 /* LoginView.swift */,
+				43E363F427B6FECB009E5803 /* ProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -91,6 +105,7 @@
 		43E363E527B6C8AA009E5803 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				43E363EA27B6CB7C009E5803 /* UserModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -98,6 +113,7 @@
 		43E363E627B6C8B4009E5803 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				43E363F027B6FCC8009E5803 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -105,6 +121,8 @@
 		43E363E727B6C8C4009E5803 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				43E363EE27B6D022009E5803 /* Constants.swift */,
+				43E363F227B6FCDC009E5803 /* UserService.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -115,7 +133,6 @@
 				C7CD0CE6AB6EFB9F91DD8908 /* Pods-CapstoneProject.debug.xcconfig */,
 				555B26B9679E5915434FD9E7 /* Pods-CapstoneProject.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -242,7 +259,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43E363F527B6FECB009E5803 /* ProfileView.swift in Sources */,
+				43E363F327B6FCDC009E5803 /* UserService.swift in Sources */,
+				43E363EF27B6D022009E5803 /* Constants.swift in Sources */,
 				43E363D927B6C838009E5803 /* LaunchView.swift in Sources */,
+				43E363F127B6FCC8009E5803 /* User.swift in Sources */,
+				43E363EB27B6CB7C009E5803 /* UserModel.swift in Sources */,
+				43E363ED27B6CD65009E5803 /* LoginView.swift in Sources */,
 				43E363D727B6C838009E5803 /* CapstoneProjectApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
