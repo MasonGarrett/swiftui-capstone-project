@@ -11,4 +11,5 @@ class User {
     
     var displayName: String = ""
     var favouriteTeam: String = ""
+    var bio: String = ""
 }

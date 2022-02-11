@@ -20,7 +20,7 @@ struct LaunchView: View {
             LoginView()
                 .onAppear {
                     // Check if user is logged in or out
-                    model.checkLogin()
+                    self.model.checkLogin()
                 }
         }
         else {
@@ -50,8 +50,6 @@ struct LaunchView: View {
                         // Change to logged out view
                         self.model.checkLogin()
                     }
-
-                
             }
             .onAppear {
                 UITabBar.appearance().backgroundColor = UIColor(red: 248/255, green: 247/255, blue: 248/255, alpha: 100)
