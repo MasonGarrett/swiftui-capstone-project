@@ -19,6 +19,11 @@
 		43E363F127B6FCC8009E5803 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E363F027B6FCC8009E5803 /* User.swift */; };
 		43E363F327B6FCDC009E5803 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E363F227B6FCDC009E5803 /* UserService.swift */; };
 		43E363F527B6FECB009E5803 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E363F427B6FECB009E5803 /* ProfileView.swift */; };
+		43E363F727B816D0009E5803 /* MatchesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E363F627B816D0009E5803 /* MatchesView.swift */; };
+		43E363F927B81F1A009E5803 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 43E363F827B81F1A009E5803 /* Keys.plist */; };
+		43E363FB27B82609009E5803 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E363FA27B82609009E5803 /* Match.swift */; };
+		43E363FF27B83E82009E5803 /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E363FE27B83E82009E5803 /* Round.swift */; };
+		43E3640127B858DE009E5803 /* MatchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E3640027B858DE009E5803 /* MatchCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +40,11 @@
 		43E363F027B6FCC8009E5803 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		43E363F227B6FCDC009E5803 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		43E363F427B6FECB009E5803 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		43E363F627B816D0009E5803 /* MatchesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesView.swift; sourceTree = "<group>"; };
+		43E363F827B81F1A009E5803 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		43E363FA27B82609009E5803 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		43E363FE27B83E82009E5803 /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
+		43E3640027B858DE009E5803 /* MatchCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCardView.swift; sourceTree = "<group>"; };
 		555B26B9679E5915434FD9E7 /* Pods-CapstoneProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneProject.release.xcconfig"; path = "Target Support Files/Pods-CapstoneProject/Pods-CapstoneProject.release.xcconfig"; sourceTree = "<group>"; };
 		C7CD0CE6AB6EFB9F91DD8908 /* Pods-CapstoneProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneProject.debug.xcconfig"; path = "Target Support Files/Pods-CapstoneProject/Pods-CapstoneProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +89,7 @@
 				43E363E727B6C8C4009E5803 /* Helpers */,
 				43E363DA27B6C83A009E5803 /* Assets.xcassets */,
 				43E363E827B6CA0F009E5803 /* GoogleService-Info.plist */,
+				43E363F827B81F1A009E5803 /* Keys.plist */,
 				43E363DC27B6C83A009E5803 /* Preview Content */,
 			);
 			path = CapstoneProject;
@@ -98,6 +109,8 @@
 				43E363D827B6C838009E5803 /* LaunchView.swift */,
 				43E363EC27B6CD65009E5803 /* LoginView.swift */,
 				43E363F427B6FECB009E5803 /* ProfileView.swift */,
+				43E363F627B816D0009E5803 /* MatchesView.swift */,
+				43E3640027B858DE009E5803 /* MatchCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -114,6 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				43E363F027B6FCC8009E5803 /* User.swift */,
+				43E363FA27B82609009E5803 /* Match.swift */,
+				43E363FE27B83E82009E5803 /* Round.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -204,6 +219,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43E363F927B81F1A009E5803 /* Keys.plist in Resources */,
 				43E363DE27B6C83A009E5803 /* Preview Assets.xcassets in Resources */,
 				43E363DB27B6C83A009E5803 /* Assets.xcassets in Resources */,
 				43E363E927B6CA0F009E5803 /* GoogleService-Info.plist in Resources */,
@@ -262,7 +278,11 @@
 				43E363F527B6FECB009E5803 /* ProfileView.swift in Sources */,
 				43E363F327B6FCDC009E5803 /* UserService.swift in Sources */,
 				43E363EF27B6D022009E5803 /* Constants.swift in Sources */,
+				43E363FF27B83E82009E5803 /* Round.swift in Sources */,
+				43E3640127B858DE009E5803 /* MatchCardView.swift in Sources */,
+				43E363FB27B82609009E5803 /* Match.swift in Sources */,
 				43E363D927B6C838009E5803 /* LaunchView.swift in Sources */,
+				43E363F727B816D0009E5803 /* MatchesView.swift in Sources */,
 				43E363F127B6FCC8009E5803 /* User.swift in Sources */,
 				43E363EB27B6CB7C009E5803 /* UserModel.swift in Sources */,
 				43E363ED27B6CD65009E5803 /* LoginView.swift in Sources */,

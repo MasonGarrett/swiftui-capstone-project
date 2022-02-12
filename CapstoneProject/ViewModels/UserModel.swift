@@ -17,6 +17,16 @@ class UserModel: ObservableObject {
     // Reference to Cloud Firestore database
     private let db = Firestore.firestore()
     
+    private var weekNumber = 0
+    private var roundId = 0
+    
+    @Published var weeklyMatches = [Match]()
+        
+    init () {
+        
+        getRound()
+    }
+    
     // MARK: Authentication Methods
     
     func checkLogin() {
@@ -100,4 +110,126 @@ class UserModel: ObservableObject {
         user.correctGames = 0
         user.balance = 50
     }
+    
+    func getRound() {
+                
+        let calendar = Calendar.current
+        var today = Date()
+        
+        while !Calendar.current.isDateInWeekend(today) {
+            today = calendar.date(byAdding: .day, value: 1, to: today)!
+        }
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let date = formatter.string(from: today)
+        
+        // Create URL
+        var searchString = Constants.apiMatchesURL
+        searchString += "/\(date)?key="
+        
+        var keys: NSDictionary?
+        
+        if let path = Bundle.main.path(forResource: "Keys", ofType: "plist") {
+            keys = NSDictionary(contentsOfFile: path)
+        }
+        
+        if let dict = keys {
+            let apiKey = dict["apiKey"] as? String
+            searchString += apiKey!
+            let urlComponents = URLComponents(string: searchString)
+            let url = urlComponents!.url
+            
+            // Create URL Request
+            var request = URLRequest(url: url!, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10.0)
+            request.httpMethod = "GET"
+            
+            // Get URL Session
+            let session = URLSession.shared
+            
+            // Create Data Task
+            let dataTask = session.dataTask(with: request) { (data, response, error) in
+                
+                // Check that there isn't an error
+                if error == nil {
+                    
+                    do {
+                        // Parse json
+                        let decoder = JSONDecoder()
+                        let result = try decoder.decode([Round].self, from: data!)
+                        
+                        for match in result {
+                            if Constants.LCSTeamKeys.contains(match.TeamAKey ?? "") || Constants.LCSTeamKeys.contains(match.TeamBKey ?? "") {
+                                self.roundId = match.RoundId!
+                                self.weekNumber = match.Week!
+                                break
+                            }
+                        }
+                    }
+                    catch {
+                        print(error)
+                    }
+                }
+            }
+            // Start the Data Task
+            dataTask.resume()
+        }
+    }
+    
+    func getWeekly() {
+        
+        // Create URL
+        var searchString = Constants.apiWeeklyURL
+        searchString += "/\(roundId)?key="
+        
+        var keys: NSDictionary?
+        
+        if let path = Bundle.main.path(forResource: "Keys", ofType: "plist") {
+            keys = NSDictionary(contentsOfFile: path)
+        }
+        
+        if let dict = keys {
+            let apiKey = dict["apiKey"] as? String
+            searchString += apiKey!
+            let urlComponents = URLComponents(string: searchString)
+            let url = urlComponents!.url
+            
+            // Create URL Request
+            var request = URLRequest(url: url!, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10.0)
+            request.httpMethod = "GET"
+            
+            // Get URL Session
+            let session = URLSession.shared
+            
+            // Create Data Task
+            let dataTask = session.dataTask(with: request) { (data, response, error) in
+                
+                // Check that there isn't an error
+                if error == nil {
+                    
+                    do {
+                        // Parse json
+                        let decoder = JSONDecoder()
+                        let result = try decoder.decode([Match].self, from: data!)
+                        
+                        var matches = [Match]()
+                        for match in result {
+                            if match.Week == self.weekNumber {
+                                matches.append(match)
+                            }
+                        }
+                        DispatchQueue.main.async {
+                            self.weeklyMatches = matches
+                        }
+                    }
+                    catch {
+                        print(error)
+                    }
+                }
+            }
+            // Start the Data Task
+            dataTask.resume()
+        }
+    }
+    
 }

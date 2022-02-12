@@ -36,6 +36,17 @@ struct LaunchView: View {
                         }
                     }
                 
+                MatchesView()
+                    .tabItem {
+                        VStack {
+                            Image(systemName: "calendar")
+                            Text("Matches")
+                        }
+                    }
+                    .onAppear {
+                        self.model.getWeekly()
+                    }
+                
                 Text("Sign Out")
                     .tabItem {
                         VStack {
