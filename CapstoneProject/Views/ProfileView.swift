@@ -11,10 +11,11 @@ import Firebase
 struct ProfileView: View {
     
     @EnvironmentObject var model: UserModel
-    @State var user = UserService.shared.user
+    let user = UserService.shared.user
+    
+    @State var editView = false
     
     var body: some View {
-        
         GeometryReader { geo in
             VStack (alignment: .leading, spacing: 20) {
                 
@@ -22,25 +23,23 @@ struct ProfileView: View {
                 
                 // User Info
                 HStack {
-                    Spacer()
                     Image("lcslogo")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 50)
-                    
-                    Spacer()
-                    
+                                        
                     VStack(alignment: .leading) {
-                        Text("MaseLoL")
+                        Text(user.displayName)
                             .font(.headline)
-                        Text("Counter Logic Gaming")
+                        Text(user.favouriteTeam)
                     }
                     
                     Spacer()
                     
                     Button {
                         // TODO: Edit users profile
-                        print(UserService.shared.user.displayName)
+                        editView = true
+
                     } label: {
                         ZStack {
                             Rectangle()
@@ -52,10 +51,15 @@ struct ProfileView: View {
                                 .foregroundColor(.white)
                         }
                     }
+                    .sheet(isPresented: $editView) {
+                        editView = false
+                    } content: {
+                        EditProfileView(editView: $editView)
+                    }
                 }
-                                
-                Text("Hi! My name is MaseLoL, also known as Mase! I am an avid CLG fan for the last 6 year. I main ADC and I am currently Diamond 3 on the NA ladder.")
-                                
+                
+                Text(user.bio)
+                
                 // Match History Button
                 HStack {
                     Spacer()
@@ -73,7 +77,7 @@ struct ProfileView: View {
                         }
                     }
                 }
-                                
+                
                 // Users Stats
                 HStack {
                     ZStack {
@@ -81,7 +85,7 @@ struct ProfileView: View {
                             .foregroundColor(Color(.lightGray))
                             .frame(width: geo.size.width / 3 - 20, height: geo.size.width / 3 - 20)
                         VStack{
-                            Text("7")
+                            Text(String(user.winStreak))
                                 .font(.system(size: 13))
                                 .bold()
                             
@@ -95,7 +99,7 @@ struct ProfileView: View {
                             .foregroundColor(Color(.lightGray))
                             .frame(width: geo.size.width / 3 - 20, height: geo.size.width / 3 - 20)
                         VStack{
-                            Text("25")
+                            Text(String(user.correctGames))
                                 .font(.system(size: 13))
                                 .bold()
                             
@@ -109,13 +113,13 @@ struct ProfileView: View {
                             .foregroundColor(Color(.lightGray))
                             .frame(width: geo.size.width / 3 - 20, height: geo.size.width / 3 - 20)
                         VStack{
-                            Text("77%")
+                            Text("\(user.correctGames / (user.totalGamesBet == 0 ? 1 : 0))%")
                                 .font(.system(size: 13))
                                 .bold()
-
+                            
                             Text("Correct Games %")
                                 .font(.system(size: 13))
-
+                            
                         }
                     }
                 }
@@ -133,10 +137,10 @@ struct ProfileView: View {
                         Text("Current Balance")
                             .font(.system(size: 20))
                             .bold()
-
+                        
                         Spacer()
                         
-                        Text("$125.00")
+                        Text("\(user.balance) Points")
                             .font(.system(size: 40))
                             .bold()
                         

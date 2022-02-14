@@ -78,12 +78,35 @@ class UserModel: ObservableObject {
             // Parse the data out and set the user meta data
             let data = snapshot!.data()
             let user = UserService.shared.user
-            user.displayName = data?["displayName"] as? String ?? ""
-            user.favouriteTeam = data?["favouriteTeam"] as? String ?? ""
-            user.bio = data?["bio"] as? String ?? ""
-            user.winStreak = data?["winStreak"] as? Int ?? 0
-            user.correctGames = data?["correctGames"] as? Int ?? 0
-            user.balance = data?["balance"] as? Int ?? 0
+            
+            DispatchQueue.main.async {
+                user.displayName = data?["displayName"] as? String ?? ""
+                user.favouriteTeam = data?["favouriteTeam"] as? String ?? ""
+                user.bio = data?["bio"] as? String ?? ""
+                user.winStreak = data?["winStreak"] as? Int ?? 0
+                user.correctGames = data?["correctGames"] as? Int ?? 0
+                user.totalGamesBet = data?["totalGamesBet"] as? Int ?? 0
+                user.balance = data?["balance"] as? Int ?? 0
+            }
+        }
+    }
+    
+    func saveUserData(team: Int, bio: String) {
+        
+        // Check that there's a logged in user
+        guard Auth.auth().currentUser != nil else {
+            return
+        }
+        
+        let ref = db.collection("users").document(Auth.auth().currentUser!.uid)
+        
+        ref.setData(["favouriteTeam": Constants.LCSTeams[team], "bio": bio], merge: true)
+        
+        let user = UserService.shared.user
+        
+        DispatchQueue.main.async {
+            user.favouriteTeam = Constants.LCSTeams[team]
+            user.bio = bio
         }
     }
     
@@ -99,6 +122,7 @@ class UserModel: ObservableObject {
                      "bio": "My name is, \(username)!",
                      "winStreak": 0,
                      "correctGames": 0,
+                     "totalGamesBet": 0,
                      "balance": 50], merge: true)
         
         // Update the user meta data
@@ -108,6 +132,7 @@ class UserModel: ObservableObject {
         user.bio = ""
         user.winStreak = 0
         user.correctGames = 0
+        user.totalGamesBet = 0
         user.balance = 50
     }
     
@@ -160,8 +185,10 @@ class UserModel: ObservableObject {
                         
                         for match in result {
                             if Constants.LCSTeamKeys.contains(match.TeamAKey ?? "") || Constants.LCSTeamKeys.contains(match.TeamBKey ?? "") {
-                                self.roundId = match.RoundId!
-                                self.weekNumber = match.Week!
+                                DispatchQueue.main.async {
+                                    self.roundId = match.RoundId!
+                                    self.weekNumber = match.Week!
+                                }
                                 break
                             }
                         }

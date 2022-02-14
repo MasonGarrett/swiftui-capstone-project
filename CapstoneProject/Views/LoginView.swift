@@ -20,7 +20,7 @@ struct LoginView: View {
     @State var confirmPassword = ""
     @State var selectedTeam = 0
     @State var errorMessage: String?
-    
+        
     var buttonText: String {
         
         if loginMode == Constants.LoginMode.login {
@@ -47,9 +47,7 @@ struct LoginView: View {
                 .font(.title)
                 .bold()
                 .padding(.bottom, 40)
-            
-            //Spacer()
-            
+                        
             // Picker (Login or Signup)
             Picker(selection: $loginMode) {
                 
@@ -62,12 +60,20 @@ struct LoginView: View {
                 Text("Login/Signup")
             }
             .pickerStyle(SegmentedPickerStyle())
+            .onTapGesture {
+                if loginMode == Constants.LoginMode.login {
+                    loginMode = Constants.LoginMode.createAccount
+                }
+                else {
+                    loginMode = Constants.LoginMode.login
+                }
+            }
             
             // Form
             if loginMode == Constants.LoginMode.login {
                 Group {
                     TextField("Email", text: $email)
-                    
+
                     SecureField("Password", text: $password)
                 }
             }
@@ -80,7 +86,7 @@ struct LoginView: View {
                     SecureField("Password", text: $password)
                     
                     SecureField("Confirm Password", text: $confirmPassword)
-                    
+
                     HStack {
                         Text("Your Favorite Team: ")
                         Picker("Select Favorite Team", selection: $selectedTeam) {
@@ -169,6 +175,16 @@ struct LoginView: View {
         }
         .padding(.horizontal, 40)
         .textFieldStyle(RoundedBorderTextFieldStyle())
+        .onTapGesture {
+            hideKeyboard()
+        }
+    }
+}
+
+extension View {
+    func hideKeyboard() {
+        let resign = #selector(UIResponder.resignFirstResponder)
+        UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
     }
 }
 

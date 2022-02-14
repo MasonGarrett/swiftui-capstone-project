@@ -14,5 +14,6 @@ class User {
     var bio: String = ""
     var winStreak: Int = 0
     var correctGames: Int = 0
+    var totalGamesBet: Int = 0
     var balance: Int = 50
 }
