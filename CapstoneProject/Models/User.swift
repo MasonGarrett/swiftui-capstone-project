@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class User {
     
@@ -16,4 +17,5 @@ class User {
     var correctGames: Int = 0
     var totalGamesBet: Int = 0
     var balance: Int = 50
+    var image: UIImage = UIImage(named: "blankProfile")!
 }

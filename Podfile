@@ -8,4 +8,5 @@ target 'CapstoneProject' do
   # Pods for CapstoneProject
   pod 'Firebase/Firestore'
   pod 'Firebase/Auth'
+  pod 'Firebase/Storage'	
 end

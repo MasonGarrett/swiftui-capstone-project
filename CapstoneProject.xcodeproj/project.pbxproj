@@ -25,6 +25,7 @@
 		43E363FF27B83E82009E5803 /* Round.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E363FE27B83E82009E5803 /* Round.swift */; };
 		43E3640127B858DE009E5803 /* MatchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E3640027B858DE009E5803 /* MatchCardView.swift */; };
 		43E3640327BADA47009E5803 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E3640227BADA47009E5803 /* EditProfileView.swift */; };
+		43E3640827BAFAE5009E5803 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E3640727BAFAE5009E5803 /* ImagePickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,8 @@
 		43E363FE27B83E82009E5803 /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
 		43E3640027B858DE009E5803 /* MatchCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCardView.swift; sourceTree = "<group>"; };
 		43E3640227BADA47009E5803 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		43E3640427BAF9BE009E5803 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		43E3640727BAFAE5009E5803 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		555B26B9679E5915434FD9E7 /* Pods-CapstoneProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneProject.release.xcconfig"; path = "Target Support Files/Pods-CapstoneProject/Pods-CapstoneProject.release.xcconfig"; sourceTree = "<group>"; };
 		C7CD0CE6AB6EFB9F91DD8908 /* Pods-CapstoneProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneProject.debug.xcconfig"; path = "Target Support Files/Pods-CapstoneProject/Pods-CapstoneProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,6 +87,7 @@
 		43E363D527B6C838009E5803 /* CapstoneProject */ = {
 			isa = PBXGroup;
 			children = (
+				43E3640427BAF9BE009E5803 /* Info.plist */,
 				43E363D627B6C838009E5803 /* CapstoneProjectApp.swift */,
 				43E363E427B6C8A2009E5803 /* Views */,
 				43E363E527B6C8AA009E5803 /* ViewModels */,
@@ -114,6 +118,7 @@
 				43E363F627B816D0009E5803 /* MatchesView.swift */,
 				43E3640027B858DE009E5803 /* MatchCardView.swift */,
 				43E3640227BADA47009E5803 /* EditProfileView.swift */,
+				43E3640727BAFAE5009E5803 /* ImagePickerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -282,6 +287,7 @@
 				43E363F327B6FCDC009E5803 /* UserService.swift in Sources */,
 				43E363EF27B6D022009E5803 /* Constants.swift in Sources */,
 				43E363FF27B83E82009E5803 /* Round.swift in Sources */,
+				43E3640827BAFAE5009E5803 /* ImagePickerView.swift in Sources */,
 				43E3640127B858DE009E5803 /* MatchCardView.swift in Sources */,
 				43E363FB27B82609009E5803 /* Match.swift in Sources */,
 				43E363D927B6C838009E5803 /* LaunchView.swift in Sources */,
@@ -425,6 +431,8 @@
 				DEVELOPMENT_TEAM = 6DNY3CMBDZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CapstoneProject/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "In order to upload profile picture, we need camera permission";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -455,6 +463,8 @@
 				DEVELOPMENT_TEAM = 6DNY3CMBDZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CapstoneProject/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "In order to upload profile picture, we need camera permission";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

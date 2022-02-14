@@ -23,10 +23,13 @@ struct ProfileView: View {
                 
                 // User Info
                 HStack {
-                    Image("lcslogo")
+                    Image(uiImage: user.image)
                         .resizable()
-                        .scaledToFit()
-                        .frame(width: 50)
+                        .scaledToFill()
+                        .frame(width: 64, height:64)
+                        .cornerRadius(32)
+                        .overlay(RoundedRectangle(cornerRadius: 32)
+                                    .stroke(Color.black, lineWidth: 3))
                                         
                     VStack(alignment: .leading) {
                         Text(user.displayName)

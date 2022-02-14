@@ -18,6 +18,10 @@ struct EditProfileView: View {
     @Binding var editView: Bool
     @FocusState var bioIsFocused: Bool
     
+    @State private var sourceType: UIImagePickerController.SourceType = .camera
+    @State private var selectedImage: UIImage?
+    @State private var isImagePickerDisplay = false
+    
     var body: some View {
         
         VStack (alignment: .center, spacing: 20) {
@@ -29,7 +33,7 @@ struct EditProfileView: View {
                     Text("Cancel")
                 }
                 .padding([.leading], 15)
-
+                
                 
                 Spacer()
                 Text("Edit Profile")
@@ -38,7 +42,7 @@ struct EditProfileView: View {
                 Spacer()
                 
                 Button {
-                    model.saveUserData(team: favTeam, bio: bio)
+                    model.saveUserData(image: selectedImage!, team: favTeam, bio: bio)
                     editView = false
                 } label: {
                     Text("Done")
@@ -48,17 +52,33 @@ struct EditProfileView: View {
             
             Divider()
             
-            Image("lcslogo")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 50)
+            if let selectedImage = selectedImage {
+                Image(uiImage: selectedImage)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 128, height:128)
+                    .cornerRadius(64)
+                    .overlay(RoundedRectangle(cornerRadius: 64)
+                                .stroke(Color.black, lineWidth: 3))
+            }
+            else {
+                Image("blankProfile")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 128, height:128)
+                    .cornerRadius(64)
+                    .overlay(RoundedRectangle(cornerRadius: 64)
+                                .stroke(Color.black, lineWidth: 3))
+            }
             
-            Button {
-                // TODO: Change pic
+            Menu {
+                Button("Camera", action: takePicture)
+                Button("Photo Library", action: selectPicture)
+                
             } label: {
                 Text("Change Profile Picture")
             }
-
+            
             Divider()
             
             VStack (alignment: .leading) {
@@ -77,7 +97,7 @@ struct EditProfileView: View {
                                 }
                             }
                             .pickerStyle(MenuPickerStyle())
-                                                    
+                            
                             Spacer()
                         }
                     }
@@ -102,7 +122,7 @@ struct EditProfileView: View {
                                     .opacity(0)
                                     .padding(.all, 8)
                             }
-                        
+                            
                             Spacer()
                         }
                     }
@@ -118,9 +138,23 @@ struct EditProfileView: View {
                 }
             }
             self.bio = user.bio
+            self.selectedImage = user.image
         }
         .onTapGesture {
             bioIsFocused = false
         }
+        .sheet(isPresented: self.$isImagePickerDisplay) {
+            ImagePickerView(selectedImage: self.$selectedImage, sourceType: self.sourceType)
+        }
+    }
+    
+    func takePicture() {
+        self.sourceType = .camera
+        self.isImagePickerDisplay.toggle()
+    }
+    
+    func selectPicture() {
+        self.sourceType = .photoLibrary
+        self.isImagePickerDisplay.toggle()
     }
 }

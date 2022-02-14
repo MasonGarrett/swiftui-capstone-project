@@ -8,6 +8,7 @@
 import Foundation
 import Firebase
 import FirebaseAuth
+import FirebaseStorage
 
 class UserModel: ObservableObject {
     
@@ -21,7 +22,7 @@ class UserModel: ObservableObject {
     private var roundId = 0
     
     @Published var weeklyMatches = [Match]()
-        
+    
     init () {
         
         getRound()
@@ -88,10 +89,11 @@ class UserModel: ObservableObject {
                 user.totalGamesBet = data?["totalGamesBet"] as? Int ?? 0
                 user.balance = data?["balance"] as? Int ?? 0
             }
+            self.downloadImage()
         }
     }
     
-    func saveUserData(team: Int, bio: String) {
+    func saveUserData(image: UIImage, team: Int, bio: String) {
         
         // Check that there's a logged in user
         guard Auth.auth().currentUser != nil else {
@@ -101,6 +103,8 @@ class UserModel: ObservableObject {
         let ref = db.collection("users").document(Auth.auth().currentUser!.uid)
         
         ref.setData(["favouriteTeam": Constants.LCSTeams[team], "bio": bio], merge: true)
+        
+        saveImage(image: image)
         
         let user = UserService.shared.user
         
@@ -134,10 +138,72 @@ class UserModel: ObservableObject {
         user.correctGames = 0
         user.totalGamesBet = 0
         user.balance = 50
+        
+        saveImage()
+    }
+    
+    func saveImage(image: UIImage = UIImage(named: "blankProfile")!) {
+        
+        // Check that there's a logged in user
+        guard Auth.auth().currentUser != nil else {
+            return
+        }
+        
+        let storage = Storage.storage()
+        
+        let storageRef = storage.reference(withPath: Auth.auth().currentUser!.uid)
+        
+        guard let imageData = image.jpegData(compressionQuality: 0.5) else {
+            return
+        }
+        
+        storageRef.putData(imageData, metadata: nil) { metadeta, error in
+            
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+        }
+        DispatchQueue.main.async {
+            UserService.shared.user.image = image
+        }
+    }
+    
+    func downloadImage() {
+        
+        // Check that there's a logged in user
+        guard Auth.auth().currentUser != nil else {
+            return
+        }
+        
+        let storage = Storage.storage()
+        
+        let storageRef = storage.reference(withPath: Auth.auth().currentUser!.uid)
+        
+        
+        storageRef.downloadURL { url, error in
+            
+            if let error = error{
+                print(error.localizedDescription)
+                return
+            }
+            
+            self.getData(from: url!) { data, response, error in
+                guard let data = data, error == nil else { return }
+                // always update the UI from the main thread
+                DispatchQueue.main.async {
+                    UserService.shared.user.image = UIImage(data: data)!
+                }
+            }
+        }
+    }
+    
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
     
     func getRound() {
-                
+        
         let calendar = Calendar.current
         var today = Date()
         
