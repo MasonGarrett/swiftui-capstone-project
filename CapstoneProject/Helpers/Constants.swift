@@ -23,5 +23,5 @@ struct Constants {
     
     static var apiWeeklyURL = "https://api.sportsdata.io/v3/lol/scores/json/Schedule"
     
-    static var apiResultsURL = "https://api.sportsdata.io/v3/lol/stats/json/BoxScores"
+    static var apiResultsURL = "https://api.sportsdata.io/v3/lol/stats/json/BoxScore"
 }

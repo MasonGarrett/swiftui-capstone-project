@@ -1,17 +1,16 @@
 //
-//  MatchCardView.swift
+//  MatchHistoryCardView.swift
 //  CapstoneProject
 //
-//  Created by Mason Garrett on 2022-02-12.
+//  Created by Mason Garrett on 2022-02-23.
 //
 
 import SwiftUI
 
-struct MatchCardView: View {
-    
-    var time: String
-    var teamA: String
-    var teamB: String
+struct MatchHistoryCardView: View {
+    var winningTeam: String
+    var losingTeam: String
+    var userWon: Bool
     
     var body: some View {
         
@@ -21,26 +20,29 @@ struct MatchCardView: View {
             
             HStack {
                 Group {
-                    Text(time)
+                    
+                    Image(systemName: userWon == true ? "checkmark.circle" : "x.circle")
+                
+                    
                     Spacer()
-                    Image(teamA)
+                    Image(winningTeam)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 50)
                     Spacer()
-                    Text(teamA)
+                    Text(winningTeam)
                         .bold()
                     Spacer()
                 }
                 Group {
                     Text("vs")
                     Spacer()
-                    Image(teamB)
+                    Image(losingTeam)
                         .resizable()
                         .scaledToFit()
                         .frame(width: 50)
                     Spacer()
-                    Text(teamB)
+                    Text(losingTeam)
                         .bold()
                 }
             }

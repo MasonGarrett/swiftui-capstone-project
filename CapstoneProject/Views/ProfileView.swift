@@ -14,6 +14,7 @@ struct ProfileView: View {
     let user = UserService.shared.user
     
     @State var editView = false
+    @State var matchView = false
     
     var body: some View {
         GeometryReader { geo in
@@ -30,7 +31,7 @@ struct ProfileView: View {
                         .cornerRadius(32)
                         .overlay(RoundedRectangle(cornerRadius: 32)
                                     .stroke(Color.black, lineWidth: 3))
-                                        
+                    
                     VStack(alignment: .leading) {
                         Text(user.displayName)
                             .font(.headline)
@@ -40,9 +41,8 @@ struct ProfileView: View {
                     Spacer()
                     
                     Button {
-                        // TODO: Edit users profile
                         editView = true
-
+                        
                     } label: {
                         ZStack {
                             Rectangle()
@@ -67,7 +67,7 @@ struct ProfileView: View {
                 HStack {
                     Spacer()
                     Button {
-                        // TODO: Show match history
+                        matchView = true
                     } label: {
                         ZStack {
                             Rectangle()
@@ -78,6 +78,11 @@ struct ProfileView: View {
                             Text("Match History")
                                 .foregroundColor(.white)
                         }
+                    }
+                    .sheet(isPresented: $matchView) {
+                        matchView = false
+                    } content: {
+                        MatchHistoryView(editView: $matchView)
                     }
                 }
                 
@@ -116,9 +121,16 @@ struct ProfileView: View {
                             .foregroundColor(Color(.lightGray))
                             .frame(width: geo.size.width / 3 - 20, height: geo.size.width / 3 - 20)
                         VStack{
-                            Text("\(user.correctGames / (user.totalGamesBet == 0 ? 1 : 0))%")
-                                .font(.system(size: 13))
-                                .bold()
+                            if user.totalGamesBet == 0 {
+                                Text("\(user.correctGames / (1) * 100)%")
+                                    .font(.system(size: 13))
+                                    .bold()
+                            }
+                            else {
+                                Text("\( (Double(user.correctGames) / Double(user.totalGamesBet) * 100))%")
+                                    .font(.system(size: 13))
+                                    .bold()
+                            }
                             
                             Text("Correct Games %")
                                 .font(.system(size: 13))
@@ -149,38 +161,19 @@ struct ProfileView: View {
                         
                         Spacer()
                         
-                        HStack {
-                            Button {
-                                // TODO: Withdraw money
-                            } label: {
-                                ZStack {
-                                    Rectangle()
-                                        .foregroundColor(.blue)
-                                        .cornerRadius(10)
-                                        .frame(width: 110, height: 35)
-                                    
-                                    Text("Withdraw")
-                                        .foregroundColor(.white)
-                                }
-                            }
-                            
-                            Spacer()
-                            
-                            Button {
-                                // TODO: Deposit money
-                            } label: {
-                                ZStack {
-                                    Rectangle()
-                                        .foregroundColor(.blue)
-                                        .cornerRadius(10)
-                                        .frame(width: 110, height: 35)
-                                    
-                                    Text("Deposit")
-                                        .foregroundColor(.white)
-                                }
+                        Button {
+                            self.model.topUp()
+                        } label: {
+                            ZStack {
+                                Rectangle()
+                                    .foregroundColor(.blue)
+                                    .cornerRadius(10)
+                                    .frame(width: 110, height: 35)
+                                
+                                Text("Top Up")
+                                    .foregroundColor(.white)
                             }
                         }
-                        .padding(.horizontal, 40)
                         
                         Spacer()
                     }

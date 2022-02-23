@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		385D62F2ACD5ED0B20F85599 /* Pods_CapstoneProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0626FC6125426D9ADE737938 /* Pods_CapstoneProject.framework */; };
+		43426B6227C1812500FF013E /* BoxScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43426B6127C1812500FF013E /* BoxScore.swift */; };
+		4379CFB227C601D200DC92E4 /* MatchHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4379CFB127C601D200DC92E4 /* MatchHistoryView.swift */; };
+		4379CFB427C6041A00DC92E4 /* MatchHistoryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4379CFB327C6041A00DC92E4 /* MatchHistoryCardView.swift */; };
 		43E363D727B6C838009E5803 /* CapstoneProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E363D627B6C838009E5803 /* CapstoneProjectApp.swift */; };
 		43E363D927B6C838009E5803 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E363D827B6C838009E5803 /* LaunchView.swift */; };
 		43E363DB27B6C83A009E5803 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43E363DA27B6C83A009E5803 /* Assets.xcassets */; };
@@ -30,6 +33,9 @@
 
 /* Begin PBXFileReference section */
 		0626FC6125426D9ADE737938 /* Pods_CapstoneProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CapstoneProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		43426B6127C1812500FF013E /* BoxScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxScore.swift; sourceTree = "<group>"; };
+		4379CFB127C601D200DC92E4 /* MatchHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchHistoryView.swift; sourceTree = "<group>"; };
+		4379CFB327C6041A00DC92E4 /* MatchHistoryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchHistoryCardView.swift; sourceTree = "<group>"; };
 		43E363D327B6C838009E5803 /* CapstoneProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapstoneProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43E363D627B6C838009E5803 /* CapstoneProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapstoneProjectApp.swift; sourceTree = "<group>"; };
 		43E363D827B6C838009E5803 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
@@ -48,7 +54,6 @@
 		43E363FE27B83E82009E5803 /* Round.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Round.swift; sourceTree = "<group>"; };
 		43E3640027B858DE009E5803 /* MatchCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCardView.swift; sourceTree = "<group>"; };
 		43E3640227BADA47009E5803 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
-		43E3640427BAF9BE009E5803 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		43E3640727BAFAE5009E5803 /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		555B26B9679E5915434FD9E7 /* Pods-CapstoneProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneProject.release.xcconfig"; path = "Target Support Files/Pods-CapstoneProject/Pods-CapstoneProject.release.xcconfig"; sourceTree = "<group>"; };
 		C7CD0CE6AB6EFB9F91DD8908 /* Pods-CapstoneProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CapstoneProject.debug.xcconfig"; path = "Target Support Files/Pods-CapstoneProject/Pods-CapstoneProject.debug.xcconfig"; sourceTree = "<group>"; };
@@ -87,7 +92,6 @@
 		43E363D527B6C838009E5803 /* CapstoneProject */ = {
 			isa = PBXGroup;
 			children = (
-				43E3640427BAF9BE009E5803 /* Info.plist */,
 				43E363D627B6C838009E5803 /* CapstoneProjectApp.swift */,
 				43E363E427B6C8A2009E5803 /* Views */,
 				43E363E527B6C8AA009E5803 /* ViewModels */,
@@ -119,6 +123,8 @@
 				43E3640027B858DE009E5803 /* MatchCardView.swift */,
 				43E3640227BADA47009E5803 /* EditProfileView.swift */,
 				43E3640727BAFAE5009E5803 /* ImagePickerView.swift */,
+				4379CFB127C601D200DC92E4 /* MatchHistoryView.swift */,
+				4379CFB327C6041A00DC92E4 /* MatchHistoryCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -137,6 +143,7 @@
 				43E363F027B6FCC8009E5803 /* User.swift */,
 				43E363FA27B82609009E5803 /* Match.swift */,
 				43E363FE27B83E82009E5803 /* Round.swift */,
+				43426B6127C1812500FF013E /* BoxScore.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -289,10 +296,13 @@
 				43E363FF27B83E82009E5803 /* Round.swift in Sources */,
 				43E3640827BAFAE5009E5803 /* ImagePickerView.swift in Sources */,
 				43E3640127B858DE009E5803 /* MatchCardView.swift in Sources */,
+				4379CFB427C6041A00DC92E4 /* MatchHistoryCardView.swift in Sources */,
+				43426B6227C1812500FF013E /* BoxScore.swift in Sources */,
 				43E363FB27B82609009E5803 /* Match.swift in Sources */,
 				43E363D927B6C838009E5803 /* LaunchView.swift in Sources */,
 				43E363F727B816D0009E5803 /* MatchesView.swift in Sources */,
 				43E363F127B6FCC8009E5803 /* User.swift in Sources */,
+				4379CFB227C601D200DC92E4 /* MatchHistoryView.swift in Sources */,
 				43E363EB27B6CB7C009E5803 /* UserModel.swift in Sources */,
 				43E363ED27B6CD65009E5803 /* LoginView.swift in Sources */,
 				43E3640327BADA47009E5803 /* EditProfileView.swift in Sources */,
@@ -432,7 +442,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CapstoneProject/Info.plist;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "In order to add event to calendar, we need calendar permission";
 				INFOPLIST_KEY_NSCameraUsageDescription = "In order to upload profile picture, we need camera permission";
+				INFOPLIST_KEY_NSRemindersUsageDescription = "In order to add a reminder, we need reminder permission";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -464,7 +476,9 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CapstoneProject/Info.plist;
+				INFOPLIST_KEY_NSCalendarsUsageDescription = "In order to add event to calendar, we need calendar permission";
 				INFOPLIST_KEY_NSCameraUsageDescription = "In order to upload profile picture, we need camera permission";
+				INFOPLIST_KEY_NSRemindersUsageDescription = "In order to add a reminder, we need reminder permission";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

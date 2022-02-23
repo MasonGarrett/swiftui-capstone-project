@@ -10,8 +10,10 @@ import Foundation
 class Match: Decodable, Identifiable, ObservableObject {
 
     var GameId: Int?
+    var TeamAId: Int?
     var TeamAKey: String?
     var TeamAName: String?
+    var TeamBId: Int?
     var TeamBName: String?
     var TeamBKey: String?
     var Week: Int?
@@ -42,6 +44,13 @@ class Match: Decodable, Identifiable, ObservableObject {
         let date2 = formatter.string(from: date!)
         
         return "\(date2)"
+    }
+    
+    func getSplitDate() -> String {
+        
+        let date = DateTime!.components(separatedBy: "T")
+        
+        return date[0]
     }
 }
 

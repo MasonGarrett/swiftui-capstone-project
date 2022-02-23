@@ -18,7 +18,7 @@ struct EditProfileView: View {
     @Binding var editView: Bool
     @FocusState var bioIsFocused: Bool
     
-    @State private var sourceType: UIImagePickerController.SourceType = .camera
+    @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State private var selectedImage: UIImage?
     @State private var isImagePickerDisplay = false
     
