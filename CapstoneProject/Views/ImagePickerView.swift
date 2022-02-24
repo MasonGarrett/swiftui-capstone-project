@@ -3,6 +3,7 @@
 //  CapstoneProject
 //
 //  Created by Mason Garrett on 2022-02-14.
+//  SRC: https://medium.com/swlh/how-to-open-the-camera-and-photo-library-in-swiftui-9693f9d4586b
 //
 
 import UIKit

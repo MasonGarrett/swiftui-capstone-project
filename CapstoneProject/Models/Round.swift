@@ -7,6 +7,9 @@
 
 import Foundation
 
+/**
+ Round object from SportsDataIO API
+ */
 class Round: Decodable, Identifiable, ObservableObject {
 
     var RoundId: Int?

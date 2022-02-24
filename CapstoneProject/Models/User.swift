@@ -8,6 +8,9 @@
 import Foundation
 import UIKit
 
+/**
+ User object holds all of the users information that is displayed on the profile page.
+ */
 class User {
     
     var displayName: String = ""
@@ -22,6 +25,9 @@ class User {
     var matchHistory: [MatchHistory] = [MatchHistory]()
 }
 
+/**
+ ActiveBets object is the bet object that the user has currently betted on before the game is complete.
+ */
 class ActiveBets {
     
     var gameId: Int = 0
@@ -30,6 +36,9 @@ class ActiveBets {
     var betTeamId: Int = 0
 }
 
+/**
+ MatchHistory object is the bet object that is of a game that is already completed. 
+ */
 class MatchHistory {
     
     var gameId: Int = 0

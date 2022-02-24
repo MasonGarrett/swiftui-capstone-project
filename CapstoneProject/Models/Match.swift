@@ -7,6 +7,9 @@
 
 import Foundation
 
+/**
+ Match object from SportsDataIO API
+ */
 class Match: Decodable, Identifiable, ObservableObject {
 
     var GameId: Int?
@@ -19,6 +22,9 @@ class Match: Decodable, Identifiable, ObservableObject {
     var Week: Int?
     var DateTime: String?
     
+    /**
+     getTime converts the given DateTime and converts to the time that the game starts at.
+     */
     func getTime() -> String {
         
         let formatter = DateFormatter()
@@ -33,6 +39,9 @@ class Match: Decodable, Identifiable, ObservableObject {
         return "\(date2)"
     }
     
+    /**
+     getDate converts the given DateTime and converts the date to display as "Friday, Feb 25"
+     */
     func getDate() -> String {
         
         let formatter = DateFormatter()
@@ -46,6 +55,9 @@ class Match: Decodable, Identifiable, ObservableObject {
         return "\(date2)"
     }
     
+    /**
+     getSplitDate converts the given DateTime and splits up the string to just display the date. 
+     */
     func getSplitDate() -> String {
         
         let date = DateTime!.components(separatedBy: "T")

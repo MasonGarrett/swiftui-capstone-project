@@ -7,6 +7,9 @@
 
 import Foundation
 
+/**
+ Constants object stores values that are used across the application.
+ */
 struct Constants {
     
     enum LoginMode {

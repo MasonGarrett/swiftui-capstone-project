@@ -7,12 +7,18 @@
 
 import Foundation
 
+/**
+ BoxScore object from SportsDataIO API
+ */
 class BoxScore: Decodable, Identifiable, ObservableObject {
     
     var Game: Game?
     var Matches: [Matches]?
 }
 
+/**
+ Game object from BoxScore
+ */
 class Game: Decodable {
     
     var GameId: Int?
@@ -26,6 +32,9 @@ class Game: Decodable {
     var TeamBScore: Int?
 }
 
+/**
+ Matches Object from Matches array from BoxScore
+ */
 class Matches: Decodable {
     
     var GameId: Int?

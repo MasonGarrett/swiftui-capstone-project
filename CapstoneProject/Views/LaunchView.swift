@@ -63,7 +63,6 @@ struct LaunchView: View {
                     }
             }
             .onAppear {
-                //self.model.getUserData()
                 UITabBar.appearance().backgroundColor = UIColor(red: 248/255, green: 247/255, blue: 248/255, alpha: 100)
             }
         }

@@ -148,11 +148,16 @@ struct EditProfileView: View {
         }
     }
     
+    /**
+     Grabs the image from users camera
+     */
     func takePicture() {
         self.sourceType = .camera
         self.isImagePickerDisplay.toggle()
     }
     
+    /** Grabs the image from users photo library
+     */
     func selectPicture() {
         self.sourceType = .photoLibrary
         self.isImagePickerDisplay.toggle()

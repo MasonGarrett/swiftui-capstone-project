@@ -123,6 +123,9 @@ struct MatchesView: View {
         }
     }
     
+    /**
+     Checks to see if the user has already bet on the game.
+     */
     func checkForMatch(gameId: Int) -> Bool {
         var matchFound = false
         for bet in model.usersBets {

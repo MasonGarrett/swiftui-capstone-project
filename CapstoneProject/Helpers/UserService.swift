@@ -7,6 +7,9 @@
 
 import Foundation
 
+/**
+ UserService object that makes sure there is only one instance of User object.
+ */
 class UserService {
     
     var user = User()

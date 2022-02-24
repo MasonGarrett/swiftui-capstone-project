@@ -10,6 +10,9 @@ import Firebase
 import FirebaseAuth
 import FirebaseStorage
 
+/**
+ UserModel object handles all of the users actions.
+ */
 class UserModel: ObservableObject {
     
     // Authentication
@@ -31,6 +34,9 @@ class UserModel: ObservableObject {
     
     // MARK: Authentication Methods
     
+    /**
+     Checks to see if that user is logged in.
+     */
     func checkLogin() {
         
         // Check if their is a current user to determine login status
@@ -44,6 +50,9 @@ class UserModel: ObservableObject {
     
     // MARK: Data Methods
     
+    /**
+     Checks to see if the username already exists in the database
+     */
     func checkUsername(username: String, completion: @escaping (_ userFound: Bool) -> ()) {
         
         // Check for the entered username
@@ -60,6 +69,9 @@ class UserModel: ObservableObject {
         }
     }
     
+    /**
+     Gets the users data from firestore and stores it into the User object.
+     */
     func getUserData() {
         
         // Check that there's a logged in user
@@ -130,6 +142,9 @@ class UserModel: ObservableObject {
         }
     }
     
+    /**
+     Saves the users data to the firestore and then updates the User object with the new data.
+     */
     func saveUserData(image: UIImage, team: Int, bio: String) {
         
         // Check that there's a logged in user
@@ -151,6 +166,9 @@ class UserModel: ObservableObject {
         }
     }
     
+    /**
+     Creates a new user and sets the default values, then stores the new user into the User object.
+     */
     func createUser(username: String, favTeam: Int) {
         
         // Save the first name
@@ -181,6 +199,9 @@ class UserModel: ObservableObject {
         saveImage()
     }
     
+    /**
+     Saves the new uploaded image to the Firebase Storage with the users uid. Then updates the users profile picture in the User object.
+     */
     func saveImage(image: UIImage = UIImage(named: "blankProfile")!) {
         
         // Check that there's a logged in user
@@ -208,6 +229,9 @@ class UserModel: ObservableObject {
         }
     }
     
+    /**
+     Downloads the users profile picture from the Firebase Storage and stores it in the User object.
+     */
     func downloadImage() {
         
         // Check that there's a logged in user
@@ -237,10 +261,16 @@ class UserModel: ObservableObject {
         }
     }
     
+    /**
+     Gets the data from a URL provided as a paramater.
+     */
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
     
+    /**
+     Gets the roundId for the upcoming LCS matches and stores them into a private variable in UserModel object.
+     */
     func getRound() {
         
         let calendar = Calendar.current
@@ -308,6 +338,9 @@ class UserModel: ObservableObject {
         }
     }
     
+    /**
+     Gets the weekly matches from the roundId provided at the start of the app and stores them into a weeklymatches array in the UserModel object.
+     */
     func getWeekly() {
         
         // Create URL
@@ -364,6 +397,9 @@ class UserModel: ObservableObject {
         }
     }
     
+    /**
+     Top ups the users current balance if they are under 50 points.
+     */
     func topUp() {
         
         // Check that there's a logged in user
@@ -388,6 +424,9 @@ class UserModel: ObservableObject {
         }
     }
     
+    /**
+     Adds the selected game to the users active bets and uploads this to the Firestore.
+     */
     func bet(team: String, gameId: Int, teamId: Int) {
         
         // Check that there's a logged in user
@@ -426,6 +465,9 @@ class UserModel: ObservableObject {
         }
     }
     
+    /**
+     Adds the completed game to the users match history.
+     */
     func addMatchToHistory(winningTeamKey: String, losingTeamKey: String, userWon: Bool, gameId: Int) {
         
         // Check that there's a logged in user
@@ -457,6 +499,9 @@ class UserModel: ObservableObject {
         }
     }
     
+    /**
+     Checks all of the users activebets and sees if any of the games have been completed. If a game has been completed. It will award the user points if they bet on the correct team. Then remove this game from their active bets and store it into their match history.
+     */
     func checkActiveBets(activeBets: [ActiveBets]) {
         
         // Check that there's a logged in user
@@ -615,6 +660,9 @@ class UserModel: ObservableObject {
         }
     }
     
+    /**
+     Test function that adds a winning bet to the users active bets.
+     */
     func addWin() {
         
         // Check that there's a logged in user
@@ -644,6 +692,9 @@ class UserModel: ObservableObject {
         }
     }
     
+    /**
+     Test function to add a losing bet to the users active bets.
+     */
     func addLoss() {
         
         // Check that there's a logged in user
